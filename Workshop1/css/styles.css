@@ -1,1 +1,160 @@
+/* Task 2: General page styling */
 
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+
+/* Headings */
+
+h1 {
+    color: #1d3557;
+    font-size: 36px;
+    text-align: center;
+}
+
+h2 {
+    color: #457b9d;
+    font-size: 28px;
+    text-align: center;
+}
+
+
+/* Paragraphs */
+
+p {
+    color: #555555;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+
+/* Images */
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 3px solid #333333;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+
+/* Task 3: Navigation menu */
+
+nav {
+    background-color: #1d3557;
+    padding: 15px;
+}
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    nav li {
+        margin: 0 15px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+    }
+
+        nav a:hover {
+            background-color: #457b9d;
+        }
+
+
+/* Task 4: Contact form */
+
+form {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 150px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #1d3557;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #457b9d;
+    }
+
+
+/* Task 5: Responsive design */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 5px 0;
+    }
+
+    nav a {
+        display: block;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    form {
+        padding: 15px;
+    }
+}
