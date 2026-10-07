@@ -1,1 +1,13 @@
-
+{
+  "name": "workshop03-express",
+  "version": "1.0.0",
+  "description": "Workshop 03 - Building a Web Server with Express.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
