@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
+    <title>500 - Server Error</title>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="icon" type="image/png" href="/Laurea_favicon.png">
     <style>
@@ -16,7 +16,7 @@
         .error-code {
             font-size: 120px;
             font-weight: bold;
-            color: #e74c3c;
+            color: #e67e22;
             margin: 0;
             line-height: 1;
         }
@@ -38,16 +38,16 @@
     </nav>
 
     <div class="container error-container">
-        <div class="error-code">404</div>
-        <h1 class="error-message">🔍 Page Not Found</h1>
+        <div class="error-code">500</div>
+        <h1 class="error-message">⚠️ Internal Server Error</h1>
 
         <div class="card">
-            <p>Oops! The page you're looking for doesn't exist.</p>
-            <p>This 404 error is being handled by <strong>Express middleware</strong>.</p>
+            <p>Something went wrong on our end. We're working to fix it!</p>
+            <p>This 500 error is being handled by <strong>Express error middleware</strong>.</p>
 
             <div class="btn-group">
                 <a href="/" class="btn">← Go Home</a>
-                <a href="/about" class="btn btn-secondary">Learn More</a>
+                <a href="/contact" class="btn btn-secondary">Report Issue</a>
             </div>
         </div>
     </div>
