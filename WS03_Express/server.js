@@ -1,46 +1,70 @@
 const express = require('express');
 const path = require('path');
 
+// ========================================
+// Task 1 - Create Express App
+// ========================================
+// Step 1: Create an Express application instance
 const app = express();
+
 const PORT = process.env.PORT || 3000;
 
-// Serve static files from the public folder
+// ========================================
+// Task 2 - Serve Static Files
+// ========================================
+// Configure Express to serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Logging middleware
+
+// ========================================
+// BONUS: Custom Request Logging Middleware
+// ========================================
 app.use((req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
     next();
 });
 
-// Home page
+
+// ========================================
+// Task 3 - Add Route Handlers
+// ========================================
+
+// Home route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// About page
+// About page route
 app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'about.html'));
 });
 
-// Contact page
+// Contact page route
 app.get('/contact', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'contact.html'));
 });
 
-// Time API
+
+// ========================================
+// Task 4 - Create API Endpoint
+// ========================================
+
 app.get('/api/time', (req, res) => {
     const now = new Date();
-
     res.json({
         datetime: now.toISOString(),
         timestamp: now.getTime()
     });
 });
 
-// Express Router
+
+// ========================================
+// BONUS: Task 6 - Express Router (Optional)
+// ========================================
+
 const apiRouter = express.Router();
 
+// Route for /api/info
 apiRouter.get('/info', (req, res) => {
     res.json({
         name: 'Workshop03 Express Server',
@@ -49,29 +73,37 @@ apiRouter.get('/info', (req, res) => {
     });
 });
 
+// Mount the API router under /api
 app.use('/api', apiRouter);
 
-// 404 error handler
+
+// ========================================
+// Task 5 - Error Handling Middleware
+// ========================================
+
+// 404 Handler - Must be placed AFTER all other routes
 app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });
 
-// 500 error handler
+// 500 Error Handler - Must be placed LAST
 app.use((err, req, res, next) => {
     console.error('Server Error:', err.stack);
     res.status(500).sendFile(path.join(__dirname, 'public', '500.html'));
 });
 
-// Start server
+
+// ========================================
+// Start the Server
+// ========================================
+
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-
-    console.log('\nAvailable routes:');
-    console.log('GET /              -> Home page');
-    console.log('GET /about         -> About page');
-    console.log('GET /contact       -> Contact page');
-    console.log('GET /api/time      -> Current date/time API');
-    console.log('GET /api/info      -> Server information');
-
-    console.log('\nPress Ctrl+C to stop the server');
+    console.log(`✅ Server is running on http://localhost:${PORT}`);
+    console.log('\n📍 Available routes:');
+    console.log('  GET /              -> Home page');
+    console.log('  GET /about         -> About page');
+    console.log('  GET /contact       -> Contact page');
+    console.log('  GET /api/time      -> Current date/time API');
+    console.log('  GET /api/info      -> Server information');
+    console.log('\n⏹️  Press Ctrl+C to stop the server\n');
 });
