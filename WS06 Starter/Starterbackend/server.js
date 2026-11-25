@@ -17,16 +17,21 @@ app.get("/", (req, res) => {
 
 app.use("/api/posts", postRoutes);
 
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Backend server running on port ${PORT}`);
+});
+
 const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
 
-mongoose
-    .connect(mongoUri)
-    .then(() => {
-        console.log("Connected to MongoDB");
-        app.listen(PORT, () => {
-            console.log(`Backend server running on http://localhost:${PORT}`);
+if (!mongoUri) {
+    console.error("Missing MONGODB_URI environment variable");
+} else {
+    mongoose
+        .connect(mongoUri)
+        .then(() => {
+            console.log("Connected to MongoDB");
+        })
+        .catch((err) => {
+            console.error("Failed to connect to MongoDB:", err.message);
         });
-    })
-    .catch((err) => {
-        console.error("Failed to connect to MongoDB:", err.message);
-    });
+}
